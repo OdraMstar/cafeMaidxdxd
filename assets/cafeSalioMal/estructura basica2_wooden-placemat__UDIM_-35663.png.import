@@ -1,0 +1,38 @@
+[remap]
+
+importer="texture"
+type="CompressedTexture2D"
+uid="uid://b4q0hv4hx2skf"
+path.s3tc="res://.godot/imported/estructura basica2_wooden-placemat__UDIM_-35663.png-5b6829e78336ef92a0936357b2cafe65.s3tc.ctex"
+metadata={
+"imported_formats": ["s3tc_bptc"],
+"vram_texture": true
+}
+generator_parameters={
+"md5": "195e80840f1a44ec1678a1beaf467353"
+}
+
+[deps]
+
+source_file="res://assets/cafeSalioMal/estructura basica2_wooden-placemat__UDIM_-35663.png"
+dest_files=["res://.godot/imported/estructura basica2_wooden-placemat__UDIM_-35663.png-5b6829e78336ef92a0936357b2cafe65.s3tc.ctex"]
+
+[params]
+
+compress/mode=2
+compress/high_quality=false
+compress/lossy_quality=0.7
+compress/hdr_compression=1
+compress/normal_map=0
+compress/channel_pack=0
+mipmaps/generate=true
+mipmaps/limit=-1
+roughness/mode=0
+roughness/src_normal=""
+process/fix_alpha_border=true
+process/premult_alpha=false
+process/normal_map_invert_y=false
+process/hdr_as_srgb=false
+process/hdr_clamp_exposure=false
+process/size_limit=0
+detect_3d/compress_to=0
