@@ -1,0 +1,106 @@
+[gd_scene load_steps=16 format=3 uid="uid://dscmmga8q16ka"]
+
+[ext_resource type="Texture2D" uid="uid://c53usghs2as0q" path="res://prototype-texture-with-size.png" id="1_kyutj"]
+[ext_resource type="PackedScene" uid="uid://deenkmyr1vx4w" path="res://esenas/personajes/jugador.tscn" id="1_semyu"]
+[ext_resource type="Script" path="res://scripts/objetos/spawner.gd" id="2_m06iy"]
+[ext_resource type="PackedScene" uid="uid://cmt31dabcpr2w" path="res://esenas/objetos/taza_cafe.tscn" id="2_thtrw"]
+[ext_resource type="PackedScene" uid="uid://b5v8kv3pmcho4" path="res://assets/exportado/2.glb" id="4_m6c4n"]
+[ext_resource type="PackedScene" uid="uid://bwmliijrgkai8" path="res://esenas/objetos/mesa.tscn" id="4_w3g4i"]
+[ext_resource type="PackedScene" uid="uid://ck5bctyyks1b" path="res://assets/asdsdsad/estructura basica2.glb" id="5_mawuy"]
+
+[sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_75duv"]
+sky_horizon_color = Color(0.64625, 0.65575, 0.67075, 1)
+ground_horizon_color = Color(0.64625, 0.65575, 0.67075, 1)
+
+[sub_resource type="Sky" id="Sky_ybcq0"]
+sky_material = SubResource("ProceduralSkyMaterial_75duv")
+
+[sub_resource type="Environment" id="Environment_1s3r1"]
+background_mode = 2
+sky = SubResource("Sky_ybcq0")
+tonemap_mode = 2
+glow_enabled = true
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_n770g"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_51uc2"]
+albedo_texture = ExtResource("1_kyutj")
+uv1_triplanar = true
+uv1_world_triplanar = true
+
+[sub_resource type="PlaneMesh" id="PlaneMesh_lal61"]
+size = Vector2(15, 15)
+
+[sub_resource type="BoxMesh" id="BoxMesh_lrva2"]
+flip_faces = true
+size = Vector3(9, 2.5, 9)
+
+[sub_resource type="PrismMesh" id="PrismMesh_l43ii"]
+
+[node name="cafe" type="Node3D"]
+
+[node name="CharacterBody3D" parent="." instance=ExtResource("1_semyu")]
+
+[node name="WorldEnvironment" type="WorldEnvironment" parent="."]
+environment = SubResource("Environment_1s3r1")
+
+[node name="Node3D" type="Area3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.0528719, 1.25691, -3.86228)
+collision_mask = 2
+script = ExtResource("2_m06iy")
+tazaCafe = ExtResource("2_thtrw")
+
+[node name="tazaCafe" parent="Node3D" instance=ExtResource("2_thtrw")]
+
+[node name="Timer" type="Timer" parent="Node3D"]
+one_shot = true
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Node3D"]
+shape = SubResource("BoxShape3D_n770g")
+
+[node name="edificio" type="Node3D" parent="."]
+
+[node name="2" parent="edificio" instance=ExtResource("4_m6c4n")]
+
+[node name="estructura basica2" parent="edificio" instance=ExtResource("5_mawuy")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -4.56886, 0, -2.96475)
+visible = false
+
+[node name="Cube" parent="edificio/estructura basica2" index="0"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.884585, 0.0340226)
+
+[node name="mesa" parent="edificio" instance=ExtResource("4_w3g4i")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.33401, 0.0767263, 2.66789)
+
+[node name="mesa2" parent="edificio" instance=ExtResource("4_w3g4i")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.88964, 0.0767263, 2.66789)
+
+[node name="mesa3" parent="edificio" instance=ExtResource("4_w3g4i")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.88964, 0.0767263, 0.477505)
+
+[node name="piso" type="CSGMesh3D" parent="edificio"]
+visible = false
+material_override = SubResource("StandardMaterial3D_51uc2")
+use_collision = true
+mesh = SubResource("PlaneMesh_lal61")
+
+[node name="cafe" type="CSGMesh3D" parent="edificio"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.23363, 0)
+visible = false
+use_collision = true
+mesh = SubResource("BoxMesh_lrva2")
+
+[node name="cafetera" type="CSGMesh3D" parent="edificio"]
+transform = Transform3D(4.37047e-08, -7.62871e-10, -1, -0.0174525, -0.999848, 0, -0.999848, 0.0174525, -4.37114e-08, -0.0731053, 0.525586, -3.77155)
+use_collision = true
+mesh = SubResource("PrismMesh_l43ii")
+
+[node name="Marker3D" type="Marker3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.24009, 0.690258, 0.835118)
+
+[connection signal="area_exited" from="Node3D" to="Node3D" method="_on_area_exited"]
+[connection signal="body_exited" from="Node3D" to="Node3D" method="_on_body_exited"]
+[connection signal="timeout" from="Node3D/Timer" to="Node3D" method="_on_timer_timeout"]
+
+[editable path="edificio/2"]
+[editable path="edificio/estructura basica2"]
