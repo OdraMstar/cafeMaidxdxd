@@ -1,6 +1,6 @@
 [gd_scene load_steps=5 format=3 uid="uid://cmt31dabcpr2w"]
 
-[ext_resource type="Script" path="res://esenas/objetos/objetoSerive.gd" id="1_f426p"]
+[ext_resource type="Script" path="res://scripts/objetos/objetoSerive.gd" id="1_4cemy"]
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_23ney"]
 albedo_color = Color(1, 0.07, 0.07, 1)
@@ -16,7 +16,7 @@ radius = 0.3
 [node name="tazaCafe" type="RigidBody3D" groups=["agarrable"]]
 collision_layer = 2
 collision_mask = 7
-script = ExtResource("1_f426p")
+script = ExtResource("1_4cemy")
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="."]
 mesh = SubResource("SphereMesh_dylbk")

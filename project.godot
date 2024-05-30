@@ -11,7 +11,7 @@ config_version=5
 [application]
 
 config/name="cafe"
-run/main_scene="res://cafe.tscn"
+run/main_scene="res://esenas/niveles/cafe.tscn"
 config/features=PackedStringArray("4.2", "Forward Plus")
 config/icon="res://icon.svg"
 
