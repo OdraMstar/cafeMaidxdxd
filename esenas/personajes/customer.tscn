@@ -1,0 +1,39 @@
+[gd_scene load_steps=6 format=3 uid="uid://cw5gjkqm06ult"]
+
+[ext_resource type="Script" path="res://scripts/personajes/customer.gd" id="1_1jv1v"]
+[ext_resource type="Texture2D" uid="uid://b0pu4hnynebgb" path="res://assets/imagnes/pngwing.com(1).png" id="2_rt8ff"]
+[ext_resource type="Texture2D" uid="uid://clf35q63d35qs" path="res://assets/imagnes/2.png" id="3_yromq"]
+
+[sub_resource type="CapsuleMesh" id="CapsuleMesh_qujnm"]
+radius = 0.2
+height = 1.0
+
+[sub_resource type="CapsuleShape3D" id="CapsuleShape3D_svjwb"]
+radius = 0.2
+height = 1.14
+
+[node name="customer" type="CharacterBody3D"]
+collision_layer = 8
+script = ExtResource("1_1jv1v")
+
+[node name="globo" type="Sprite3D" parent="."]
+transform = Transform3D(0.085, 0, 0, 0, 0.085, 0, 0, 0, 0.085, 0, 0.254327, 0.501656)
+billboard = 1
+texture = ExtResource("2_rt8ff")
+
+[node name="Sprite3D" type="Sprite3D" parent="globo"]
+transform = Transform3D(1.605, 0, 0, 0, 1.605, 0, 0, 0, 1.605, 0, 1.0738, 0)
+sorting_offset = 1.0
+billboard = 1
+texture = ExtResource("3_yromq")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="."]
+mesh = SubResource("CapsuleMesh_qujnm")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="."]
+shape = SubResource("CapsuleShape3D_svjwb")
+
+[node name="NavigationAgent3D" type="NavigationAgent3D" parent="."]
+debug_enabled = true
+
+[connection signal="target_reached" from="NavigationAgent3D" to="." method="_on_navigation_agent_3d_target_reached"]

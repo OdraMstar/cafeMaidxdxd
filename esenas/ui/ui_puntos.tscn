@@ -1,0 +1,36 @@
+[gd_scene load_steps=3 format=3 uid="uid://b67o6u6fil22n"]
+
+[ext_resource type="Script" path="res://scripts/ui/ui_puntos.gd" id="1_nyja8"]
+
+[sub_resource type="LabelSettings" id="LabelSettings_61h4l"]
+font_size = 36
+
+[node name="uiPuntos" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_nyja8")
+
+[node name="MarginContainer" type="MarginContainer" parent="."]
+layout_mode = 1
+anchors_preset = 3
+anchor_left = 1.0
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -92.0
+offset_top = -39.0
+grow_horizontal = 0
+grow_vertical = 0
+theme_override_constants/margin_left = 8
+theme_override_constants/margin_top = 8
+theme_override_constants/margin_right = 8
+theme_override_constants/margin_bottom = 8
+
+[node name="Label" type="Label" parent="MarginContainer"]
+layout_mode = 2
+text = "$000000"
+label_settings = SubResource("LabelSettings_61h4l")

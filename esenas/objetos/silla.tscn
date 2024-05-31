@@ -1,0 +1,28 @@
+[gd_scene load_steps=4 format=3 uid="uid://bcin550dr53i2"]
+
+[ext_resource type="Script" path="res://scripts/objetos/silla.gd" id="1_ws8qr"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_foc2p"]
+size = Vector3(0.64, 0.705, 0.81)
+
+[sub_resource type="CylinderMesh" id="CylinderMesh_5r3w3"]
+top_radius = 0.19
+bottom_radius = 0.495
+height = 0.19
+
+[node name="silla" type="Area3D" groups=["asientos"]]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0.989719)
+collision_mask = 8
+script = ExtResource("1_ws8qr")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0.0886869)
+shape = SubResource("BoxShape3D_foc2p")
+
+[node name="CSGMesh3D" type="CSGMesh3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.0388169, 0.154168)
+use_collision = true
+mesh = SubResource("CylinderMesh_5r3w3")
+
+[node name="asiento" type="Marker3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.369803, 0.166588)

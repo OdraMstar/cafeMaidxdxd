@@ -1,6 +1,7 @@
-[gd_scene load_steps=4 format=3 uid="uid://bwmliijrgkai8"]
+[gd_scene load_steps=5 format=3 uid="uid://bwmliijrgkai8"]
 
 [ext_resource type="Script" path="res://scripts/objetos/mesa.gd" id="1_ns3lt"]
+[ext_resource type="PackedScene" uid="uid://bcin550dr53i2" path="res://esenas/objetos/silla.tscn" id="2_c7ob3"]
 
 [sub_resource type="CylinderMesh" id="CylinderMesh_rguj2"]
 height = 0.6
@@ -25,4 +26,14 @@ shape = SubResource("CylinderShape3D_vo5eq")
 [node name="Marker3D" type="Marker3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.696812, 0)
 
+[node name="sillas" type="Node3D" parent="."]
+
+[node name="silla1" parent="sillas" instance=ExtResource("2_c7ob3")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -1.22757)
+
+[node name="silla2" parent="sillas" instance=ExtResource("2_c7ob3")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 1.02784)
+
 [connection signal="body_entered" from="." to="." method="_on_body_entered"]
+[connection signal="body_entered" from="sillas/silla1" to="." method="_on_silla_1_body_entered"]
+[connection signal="body_entered" from="sillas/silla2" to="." method="_on_silla_2_body_entered"]

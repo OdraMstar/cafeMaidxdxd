@@ -11,9 +11,13 @@ config_version=5
 [application]
 
 config/name="cafe"
-run/main_scene="res://esenas/niveles/cafe.tscn"
+run/main_scene="res://esenas/cafe.tscn"
 config/features=PackedStringArray("4.2", "Forward Plus")
 config/icon="res://icon.svg"
+
+[autoload]
+
+Informacion="*res://scripts/singletons/informacion.gd"
 
 [dotnet]
 
@@ -63,3 +67,4 @@ agarrar={
 3d_physics/layer_1="mundo"
 3d_physics/layer_2="objetoInteractuable"
 3d_physics/layer_3="jugador"
+3d_physics/layer_4="customer"
