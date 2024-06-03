@@ -40,10 +40,14 @@ func _process(delta: float) -> void:
 		else:
 			if(raycastSeleccionaObjeto.is_colliding()):
 				var colision = raycastSeleccionaObjeto.get_collider() as Node3D
+				print(colision.name)
 				if colision.is_in_group("agarrable"):
 					objetoAgarrado = colision
 					objetoAgarrado.seAgarro()
 					pass
+				if colision.is_in_group("interactuable"):
+					print("onjeto interactuable")
+					colision.interactuar()
 	
 	if Input.is_action_pressed("secundario"):
 		smooth_camera.fov = lerp(

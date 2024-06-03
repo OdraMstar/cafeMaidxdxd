@@ -9,7 +9,10 @@ const JUMP_VELOCITY = 4.5
 var puntoInicio : Vector3
 var servido : bool
 var asientoAsignado : Silla = null
-
+var esperando = false
+@onready var globoTextoSprite := $globo
+@onready var imagenPedidoSprite := $globo/Sprite3D
+var pedido : String
 
 func _ready():
 	puntoInicio = global_position
@@ -32,7 +35,6 @@ func _process(_delta):
 				asiento.asignado = self 
 				asientoAsignado = asiento
 				return
-		print("no encontro asiento")
 	else:
 		if(servido):
 			navigationAgent.target_position = puntoInicio
@@ -46,8 +48,6 @@ func clienteServido():
 	
 
 func _physics_process(delta):
-	
-	
 	
 	var siguientePosision = navigationAgent.get_next_path_position()
 	# Add the gravity.
@@ -67,7 +67,6 @@ func _physics_process(delta):
 	move_and_slide()
 
 
-
 func _on_navigation_agent_3d_target_reached():
 	if servido:
 		print("se llego")
@@ -76,5 +75,15 @@ func _on_navigation_agent_3d_target_reached():
 		if asientoAsignado:
 			asientoAsignado.asignado= null
 			asientoAsignado = null
+	if !esperando:
+		print("esta esperando")
+		esperando = true
+		
 		
 	pass # Replace with function body.
+func interactuar():
+	if(esperando):
+		print("se activa")
+		globoTextoSprite.visible = true
+		pass
+	pass

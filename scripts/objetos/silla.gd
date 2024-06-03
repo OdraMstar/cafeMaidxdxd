@@ -6,6 +6,7 @@ var estaOcupada: bool
 var asignado : Customer
 
 func _ready():
+	
 	pass 
 
 func _process(delta):
