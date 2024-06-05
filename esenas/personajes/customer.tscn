@@ -35,6 +35,9 @@ mesh = SubResource("CapsuleMesh_qujnm")
 shape = SubResource("CapsuleShape3D_svjwb")
 
 [node name="NavigationAgent3D" type="NavigationAgent3D" parent="."]
+path_desired_distance = 0.5
+avoidance_enabled = true
+radius = 0.2
 debug_enabled = true
 
 [connection signal="target_reached" from="NavigationAgent3D" to="." method="_on_navigation_agent_3d_target_reached"]

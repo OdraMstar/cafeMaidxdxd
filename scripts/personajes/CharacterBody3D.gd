@@ -3,22 +3,18 @@ class_name Player
 
 const SPEED = 5.0
 const JUMP_VELOCITY = 4.5  
+
 @export var sensibility = 0.005
 @export var aim_multiplier := 0.5
-
 @onready var smooth_camera: Camera3D = $cameraPivot/Camera3D
-
 @onready var smooth_camera_fov := smooth_camera.fov
-
 @onready var cameraPivot = $cameraPivot
 # Get the gravity from the project settings to be synced with RigidBody nodes.
 var gravity = ProjectSettings.get_setting("physics/3d/default_gravity")
 var mouse_motion  := Vector2.ZERO
 @export var jump_height: float = 1.0
 @export var fall_multiplier: float = 2.5
-
 @onready var raycastSeleccionaObjeto = $cameraPivot/Camera3D/RayCast3D
-
 @onready var posisionAgarre = $grabPosition
 
 var objetoAgarrado : Node3D

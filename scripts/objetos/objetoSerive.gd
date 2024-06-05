@@ -1,7 +1,7 @@
 extends RigidBody3D
 class_name  ObjetoServible
 
-@export var nombre : String
+@export var nombre : String = "cafe"
 var esta_ocupado : bool
 @onready var colision = $CollisionShape3D
 
